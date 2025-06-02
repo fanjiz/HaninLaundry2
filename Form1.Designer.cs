@@ -28,29 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblUsername = new Label();
-            lblPassword = new Label();
             btnLogin = new Button();
+            lblUsername = new Label();
             SuspendLayout();
-            // 
-            // lblUsername
-            // 
-            lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(474, 166);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(91, 25);
-            lblUsername.TabIndex = 0;
-            lblUsername.Text = "Username";
-            lblUsername.Click += label1_Click;
-            // 
-            // lblPassword
-            // 
-            lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(474, 229);
-            lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(87, 25);
-            lblPassword.TabIndex = 1;
-            lblPassword.Text = "Password";
             // 
             // btnLogin
             // 
@@ -61,15 +41,24 @@
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             // 
+            // lblUsername
+            // 
+            lblUsername.AutoSize = true;
+            lblUsername.Location = new Point(473, 132);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(91, 25);
+            lblUsername.TabIndex = 3;
+            lblUsername.Text = "Username";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1143, 750);
-            Controls.Add(btnLogin);
-            Controls.Add(lblPassword);
             Controls.Add(lblUsername);
+            Controls.Add(btnLogin);
+            ForeColor = SystemColors.ControlText;
             Margin = new Padding(4, 5, 4, 5);
             Name = "Form1";
             Text = "LoginForm";
@@ -78,9 +67,7 @@
         }
 
         #endregion
-
-        private Label lblUsername;
-        private Label lblPassword;
         private Button btnLogin;
+        private Label lblUsername;
     }
 }
