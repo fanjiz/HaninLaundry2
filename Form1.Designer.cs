@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             btnLogin = new Button();
             lblUsername = new Label();
             lblPassword = new Label();
@@ -91,6 +92,7 @@
             Controls.Add(lblUsername);
             Controls.Add(btnLogin);
             ForeColor = SystemColors.ControlText;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4, 5, 4, 5);
             Name = "Form1";
             Text = "LoginForm";
