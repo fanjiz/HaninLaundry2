@@ -30,6 +30,7 @@
         {
             lblUsername = new Label();
             lblPassword = new Label();
+            btnLogin = new Button();
             SuspendLayout();
             // 
             // lblUsername
@@ -51,12 +52,22 @@
             lblPassword.TabIndex = 1;
             lblPassword.Text = "Password";
             // 
+            // btnLogin
+            // 
+            btnLogin.Location = new Point(462, 287);
+            btnLogin.Name = "btnLogin";
+            btnLogin.Size = new Size(112, 34);
+            btnLogin.TabIndex = 2;
+            btnLogin.Text = "Login";
+            btnLogin.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1143, 750);
+            Controls.Add(btnLogin);
             Controls.Add(lblPassword);
             Controls.Add(lblUsername);
             Margin = new Padding(4, 5, 4, 5);
@@ -70,5 +81,6 @@
 
         private Label lblUsername;
         private Label lblPassword;
+        private Button btnLogin;
     }
 }
