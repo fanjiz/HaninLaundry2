@@ -28,7 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            lblUsername = new Label();
             SuspendLayout();
+            // 
+            // lblUsername
+            // 
+            lblUsername.AutoSize = true;
+            lblUsername.Location = new Point(474, 166);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(91, 25);
+            lblUsername.TabIndex = 0;
+            lblUsername.Text = "Username";
+            lblUsername.Click += label1_Click;
             // 
             // Form1
             // 
@@ -36,12 +47,16 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1143, 750);
+            Controls.Add(lblUsername);
             Margin = new Padding(4, 5, 4, 5);
             Name = "Form1";
             Text = "LoginForm";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label lblUsername;
     }
 }
