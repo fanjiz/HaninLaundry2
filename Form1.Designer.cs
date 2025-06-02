@@ -38,7 +38,7 @@
             ClientSize = new Size(1143, 750);
             Margin = new Padding(4, 5, 4, 5);
             Name = "Form1";
-            Text = "Login1";
+            Text = "LoginForm";
             ResumeLayout(false);
         }
 
