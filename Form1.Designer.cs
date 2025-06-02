@@ -30,11 +30,12 @@
         {
             btnLogin = new Button();
             lblUsername = new Label();
+            lblPassword = new Label();
             SuspendLayout();
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(462, 287);
+            btnLogin.Location = new Point(463, 484);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(112, 34);
             btnLogin.TabIndex = 2;
@@ -50,12 +51,22 @@
             lblUsername.TabIndex = 3;
             lblUsername.Text = "Username";
             // 
+            // lblPassword
+            // 
+            lblPassword.AutoSize = true;
+            lblPassword.Location = new Point(486, 291);
+            lblPassword.Name = "lblPassword";
+            lblPassword.Size = new Size(87, 25);
+            lblPassword.TabIndex = 4;
+            lblPassword.Text = "Password";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(1143, 750);
+            Controls.Add(lblPassword);
             Controls.Add(lblUsername);
             Controls.Add(btnLogin);
             ForeColor = SystemColors.ControlText;
@@ -69,5 +80,6 @@
         #endregion
         private Button btnLogin;
         private Label lblUsername;
+        private Label lblPassword;
     }
 }
