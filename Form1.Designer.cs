@@ -34,6 +34,7 @@
             lblPassword = new Label();
             textBox1 = new TextBox();
             textBox2 = new TextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // btnLogin
@@ -79,6 +80,17 @@
             textBox2.Size = new Size(220, 31);
             textBox2.TabIndex = 6;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(382, 39);
+            label1.Name = "label1";
+            label1.Size = new Size(280, 54);
+            label1.TabIndex = 7;
+            label1.Text = "Hanin Laundry";
+            label1.Click += label1_Click_1;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -86,6 +98,7 @@
             BackColor = SystemColors.ActiveCaption;
             BackgroundImage = Properties.Resources.login;
             ClientSize = new Size(1143, 750);
+            Controls.Add(label1);
             Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(lblPassword);
@@ -106,5 +119,6 @@
         private Label lblPassword;
         private TextBox textBox1;
         private TextBox textBox2;
+        private Label label1;
     }
 }
