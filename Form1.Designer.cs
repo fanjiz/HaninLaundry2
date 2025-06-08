@@ -39,13 +39,14 @@
             // 
             // btnLogin
             // 
-            btnLogin.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnLogin.BackColor = SystemColors.MenuHighlight;
+            btnLogin.Font = new Font("Times New Roman", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.Location = new Point(506, 412);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(112, 34);
             btnLogin.TabIndex = 2;
             btnLogin.Text = "Masuk";
-            btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.UseVisualStyleBackColor = false;
             // 
             // lblUsername
             // 
