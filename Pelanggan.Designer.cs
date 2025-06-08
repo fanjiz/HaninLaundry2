@@ -119,11 +119,11 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(167, 384);
+            label4.Location = new Point(155, 384);
             label4.Name = "label4";
-            label4.Size = new Size(123, 25);
+            label4.Size = new Size(143, 25);
             label4.TabIndex = 4;
-            label4.Text = "Id Pelanggan";
+            label4.Text = "No Handphone";
             label4.Click += label4_Click;
             // 
             // Pelanggan
