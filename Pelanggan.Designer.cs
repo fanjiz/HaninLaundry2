@@ -28,25 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
+            idpelanggan = new TextBox();
             panel1 = new Panel();
             panel2 = new Panel();
             label1 = new Label();
+            namapelanggan = new TextBox();
+            nohppelanggan = new TextBox();
+            label2 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
-            // textBox1
+            // idpelanggan
             // 
-            textBox1.Location = new Point(163, 261);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(150, 31);
-            textBox1.TabIndex = 0;
-            textBox1.TextChanged += textBox1_TextChanged;
+            idpelanggan.Location = new Point(122, 180);
+            idpelanggan.Name = "idpelanggan";
+            idpelanggan.Size = new Size(213, 31);
+            idpelanggan.TabIndex = 0;
+            idpelanggan.TextChanged += textBox1_TextChanged;
             // 
             // panel1
             // 
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(nohppelanggan);
+            panel1.Controls.Add(namapelanggan);
+            panel1.Controls.Add(idpelanggan);
             panel1.Location = new Point(423, 125);
             panel1.Name = "panel1";
             panel1.Size = new Size(446, 480);
@@ -71,6 +77,30 @@
             label1.TabIndex = 0;
             label1.Text = "Pelanggan";
             // 
+            // namapelanggan
+            // 
+            namapelanggan.Location = new Point(122, 298);
+            namapelanggan.Name = "namapelanggan";
+            namapelanggan.Size = new Size(213, 31);
+            namapelanggan.TabIndex = 1;
+            // 
+            // nohppelanggan
+            // 
+            nohppelanggan.Location = new Point(122, 412);
+            nohppelanggan.Name = "nohppelanggan";
+            nohppelanggan.Size = new Size(213, 31);
+            nohppelanggan.TabIndex = 2;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Location = new Point(167, 152);
+            label2.Name = "label2";
+            label2.Size = new Size(123, 25);
+            label2.TabIndex = 3;
+            label2.Text = "Id Pelanggan";
+            // 
             // Pelanggan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -91,9 +121,12 @@
 
         #endregion
 
-        private TextBox textBox1;
+        private TextBox idpelanggan;
         private Panel panel1;
         private Panel panel2;
         private Label label1;
+        private Label label2;
+        private TextBox nohppelanggan;
+        private TextBox namapelanggan;
     }
 }
