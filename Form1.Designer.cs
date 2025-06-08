@@ -39,7 +39,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(462, 327);
+            btnLogin.Location = new Point(506, 412);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(112, 34);
             btnLogin.TabIndex = 2;
@@ -50,7 +50,7 @@
             // 
             lblUsername.AutoSize = true;
             lblUsername.BackColor = SystemColors.ButtonHighlight;
-            lblUsername.Location = new Point(473, 132);
+            lblUsername.Location = new Point(518, 204);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(91, 25);
             lblUsername.TabIndex = 3;
@@ -60,7 +60,7 @@
             // 
             lblPassword.AutoSize = true;
             lblPassword.BackColor = SystemColors.ButtonHighlight;
-            lblPassword.Location = new Point(477, 221);
+            lblPassword.Location = new Point(518, 287);
             lblPassword.Name = "lblPassword";
             lblPassword.Size = new Size(87, 25);
             lblPassword.TabIndex = 4;
@@ -68,14 +68,15 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(407, 160);
+            textBox1.BackColor = SystemColors.HighlightText;
+            textBox1.Location = new Point(453, 232);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(220, 31);
             textBox1.TabIndex = 5;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(407, 249);
+            textBox2.Location = new Point(453, 315);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(220, 31);
             textBox2.TabIndex = 6;
@@ -83,13 +84,13 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(382, 39);
+            label1.Font = new Font("Times New Roman", 20F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.Location = new Point(434, 55);
             label1.Name = "label1";
-            label1.Size = new Size(280, 54);
+            label1.Size = new Size(282, 45);
             label1.TabIndex = 7;
             label1.Text = "Hanin Laundry";
-            label1.Click += label1_Click_1;
             // 
             // Form1
             // 
@@ -109,6 +110,7 @@
             Margin = new Padding(4, 5, 4, 5);
             Name = "Form1";
             Text = "LoginForm";
+            WindowState = FormWindowState.Maximized;
             ResumeLayout(false);
             PerformLayout();
         }
