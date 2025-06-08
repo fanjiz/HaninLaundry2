@@ -39,20 +39,22 @@
             // 
             // btnLogin
             // 
+            btnLogin.Font = new Font("Times New Roman", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnLogin.Location = new Point(506, 412);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(112, 34);
             btnLogin.TabIndex = 2;
-            btnLogin.Text = "Login";
+            btnLogin.Text = "Masuk";
             btnLogin.UseVisualStyleBackColor = true;
             // 
             // lblUsername
             // 
             lblUsername.AutoSize = true;
             lblUsername.BackColor = SystemColors.ButtonHighlight;
+            lblUsername.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblUsername.Location = new Point(518, 204);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(91, 25);
+            lblUsername.Size = new Size(99, 25);
             lblUsername.TabIndex = 3;
             lblUsername.Text = "Username";
             // 
@@ -60,9 +62,10 @@
             // 
             lblPassword.AutoSize = true;
             lblPassword.BackColor = SystemColors.ButtonHighlight;
+            lblPassword.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblPassword.Location = new Point(518, 287);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(87, 25);
+            lblPassword.Size = new Size(96, 25);
             lblPassword.TabIndex = 4;
             lblPassword.Text = "Password";
             // 
