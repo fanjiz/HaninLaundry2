@@ -35,6 +35,8 @@
             namapelanggan = new TextBox();
             nohppelanggan = new TextBox();
             label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -49,6 +51,8 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label4);
+            panel1.Controls.Add(label3);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(nohppelanggan);
             panel1.Controls.Add(namapelanggan);
@@ -101,6 +105,27 @@
             label2.TabIndex = 3;
             label2.Text = "Id Pelanggan";
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(186, 270);
+            label3.Name = "label3";
+            label3.Size = new Size(64, 25);
+            label3.TabIndex = 4;
+            label3.Text = "Nama";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(167, 384);
+            label4.Name = "label4";
+            label4.Size = new Size(123, 25);
+            label4.TabIndex = 4;
+            label4.Text = "Id Pelanggan";
+            label4.Click += label4_Click;
+            // 
             // Pelanggan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -128,5 +153,7 @@
         private Label label2;
         private TextBox nohppelanggan;
         private TextBox namapelanggan;
+        private Label label3;
+        private Label label4;
     }
 }
