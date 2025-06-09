@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace HaninLaundry
 {
-    public partial class Form_pesanan: Form
+    public partial class Form_pesanan : Form
     {
         public Form_pesanan()
         {
             InitializeComponent();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
