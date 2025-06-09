@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             button1 = new Button();
+            button2 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -40,11 +41,21 @@
             button1.Text = "Bayar Pesanan";
             button1.UseVisualStyleBackColor = true;
             // 
+            // button2
+            // 
+            button2.Location = new Point(424, 12);
+            button2.Name = "button2";
+            button2.Size = new Size(232, 34);
+            button2.TabIndex = 1;
+            button2.Text = "Ubah Status Pengerjaan";
+            button2.UseVisualStyleBackColor = true;
+            // 
             // Form_pesanan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1373, 781);
+            Controls.Add(button2);
             Controls.Add(button1);
             Name = "Form_pesanan";
             Text = "Form_pesanan";
@@ -54,5 +65,6 @@
         #endregion
 
         private Button button1;
+        private Button button2;
     }
 }
