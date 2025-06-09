@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_pesanan));
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            btnbayarpesanan = new Button();
+            btnubahstatuspengerjaan = new Button();
+            btneditpesanan = new Button();
+            btnhapuspesanan = new Button();
             textBox1 = new TextBox();
-            button5 = new Button();
-            button6 = new Button();
+            btntambahpesanan = new Button();
+            btnsegarkan = new Button();
             dataGridView1 = new DataGridView();
             panel1 = new Panel();
             panel2 = new Panel();
@@ -46,6 +46,7 @@
             panel4 = new Panel();
             panel5 = new Panel();
             pictureBox4 = new PictureBox();
+            pictureBox5 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -55,87 +56,89 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // btnbayarpesanan
             // 
-            button1.BackColor = SystemColors.MenuHighlight;
-            button1.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(242, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(157, 34);
-            button1.TabIndex = 0;
-            button1.Text = "Bayar Pesanan";
-            button1.UseVisualStyleBackColor = false;
+            btnbayarpesanan.BackColor = SystemColors.MenuHighlight;
+            btnbayarpesanan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnbayarpesanan.Location = new Point(242, 82);
+            btnbayarpesanan.Name = "btnbayarpesanan";
+            btnbayarpesanan.Size = new Size(157, 34);
+            btnbayarpesanan.TabIndex = 0;
+            btnbayarpesanan.Text = "Bayar Pesanan";
+            btnbayarpesanan.UseVisualStyleBackColor = false;
+            btnbayarpesanan.Click += btnbayarpesanan_Click;
             // 
-            // button2
+            // btnubahstatuspengerjaan
             // 
-            button2.BackColor = SystemColors.MenuHighlight;
-            button2.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(424, 12);
-            button2.Name = "button2";
-            button2.Size = new Size(232, 34);
-            button2.TabIndex = 1;
-            button2.Text = "Ubah Status Pengerjaan";
-            button2.UseVisualStyleBackColor = false;
+            btnubahstatuspengerjaan.BackColor = SystemColors.MenuHighlight;
+            btnubahstatuspengerjaan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnubahstatuspengerjaan.Location = new Point(428, 82);
+            btnubahstatuspengerjaan.Name = "btnubahstatuspengerjaan";
+            btnubahstatuspengerjaan.Size = new Size(232, 34);
+            btnubahstatuspengerjaan.TabIndex = 1;
+            btnubahstatuspengerjaan.Text = "Ubah Status Pengerjaan";
+            btnubahstatuspengerjaan.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btneditpesanan
             // 
-            button3.BackColor = Color.Coral;
-            button3.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button3.Location = new Point(680, 12);
-            button3.Name = "button3";
-            button3.Size = new Size(157, 34);
-            button3.TabIndex = 2;
-            button3.Text = "Edit Pesanan";
-            button3.UseVisualStyleBackColor = false;
+            btneditpesanan.BackColor = Color.Coral;
+            btneditpesanan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btneditpesanan.Location = new Point(700, 82);
+            btneditpesanan.Name = "btneditpesanan";
+            btneditpesanan.Size = new Size(157, 34);
+            btneditpesanan.TabIndex = 2;
+            btneditpesanan.Text = "Edit Pesanan";
+            btneditpesanan.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btnhapuspesanan
             // 
-            button4.BackColor = Color.FromArgb(192, 0, 0);
-            button4.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button4.Location = new Point(865, 12);
-            button4.Name = "button4";
-            button4.Size = new Size(157, 34);
-            button4.TabIndex = 3;
-            button4.Text = "Hapus Pesanan";
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
+            btnhapuspesanan.BackColor = Color.FromArgb(192, 0, 0);
+            btnhapuspesanan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnhapuspesanan.Location = new Point(901, 82);
+            btnhapuspesanan.Name = "btnhapuspesanan";
+            btnhapuspesanan.Size = new Size(157, 34);
+            btnhapuspesanan.TabIndex = 3;
+            btnhapuspesanan.Text = "Hapus Pesanan";
+            btnhapuspesanan.UseVisualStyleBackColor = false;
+            btnhapuspesanan.Click += button4_Click;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(1134, 14);
+            textBox1.Location = new Point(1134, 85);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(150, 31);
             textBox1.TabIndex = 4;
             // 
-            // button5
+            // btntambahpesanan
             // 
-            button5.BackColor = SystemColors.MenuHighlight;
-            button5.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button5.Location = new Point(242, 88);
-            button5.Name = "button5";
-            button5.Size = new Size(225, 34);
-            button5.TabIndex = 5;
-            button5.Text = "Tambah Pesanan";
-            button5.UseVisualStyleBackColor = false;
-            button5.Click += button5_Click;
+            btntambahpesanan.BackColor = SystemColors.MenuHighlight;
+            btntambahpesanan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btntambahpesanan.Location = new Point(242, 153);
+            btntambahpesanan.Name = "btntambahpesanan";
+            btntambahpesanan.Size = new Size(225, 34);
+            btntambahpesanan.TabIndex = 5;
+            btntambahpesanan.Text = "Tambah Pesanan";
+            btntambahpesanan.UseVisualStyleBackColor = false;
+            btntambahpesanan.Click += button5_Click;
             // 
-            // button6
+            // btnsegarkan
             // 
-            button6.BackColor = SystemColors.MenuHighlight;
-            button6.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button6.Location = new Point(499, 88);
-            button6.Name = "button6";
-            button6.Size = new Size(168, 34);
-            button6.TabIndex = 6;
-            button6.Text = "Segarkan";
-            button6.UseVisualStyleBackColor = false;
+            btnsegarkan.BackColor = SystemColors.MenuHighlight;
+            btnsegarkan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnsegarkan.Location = new Point(502, 153);
+            btnsegarkan.Name = "btnsegarkan";
+            btnsegarkan.Size = new Size(168, 34);
+            btnsegarkan.TabIndex = 6;
+            btnsegarkan.Text = "Segarkan";
+            btnsegarkan.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(242, 153);
+            dataGridView1.Location = new Point(242, 256);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
             dataGridView1.Size = new Size(1042, 314);
@@ -227,24 +230,36 @@
             pictureBox4.TabIndex = 12;
             pictureBox4.TabStop = false;
             // 
+            // pictureBox5
+            // 
+            pictureBox5.BackColor = SystemColors.MenuHighlight;
+            pictureBox5.BackgroundImage = Properties.Resources.Desain_tanpa_judul_1;
+            pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox5.Location = new Point(1325, 14);
+            pictureBox5.Name = "pictureBox5";
+            pictureBox5.Size = new Size(36, 36);
+            pictureBox5.TabIndex = 0;
+            pictureBox5.TabStop = false;
+            // 
             // Form_pesanan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1373, 781);
+            Controls.Add(pictureBox5);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(button5);
+            Controls.Add(btntambahpesanan);
             Controls.Add(dataGridView1);
-            Controls.Add(button6);
+            Controls.Add(btnsegarkan);
             Controls.Add(textBox1);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(btnhapuspesanan);
+            Controls.Add(btneditpesanan);
+            Controls.Add(btnubahstatuspengerjaan);
+            Controls.Add(btnbayarpesanan);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form_pesanan";
             Text = "Form_pesanan";
@@ -257,19 +272,20 @@
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button btnbayarpesanan;
+        private Button btnubahstatuspengerjaan;
+        private Button btneditpesanan;
+        private Button btnhapuspesanan;
         private TextBox textBox1;
-        private Button button5;
-        private Button button6;
+        private Button btntambahpesanan;
+        private Button btnsegarkan;
         private DataGridView dataGridView1;
         private Panel panel1;
         private Panel panel2;
@@ -280,5 +296,6 @@
         private Panel panel4;
         private Panel panel5;
         private PictureBox pictureBox4;
+        private PictureBox pictureBox5;
     }
 }

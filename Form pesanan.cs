@@ -36,5 +36,10 @@ namespace HaninLaundry
         {
 
         }
+
+        private void btnbayarpesanan_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

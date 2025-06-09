@@ -83,6 +83,16 @@ namespace HaninLaundry.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Desain_tanpa_judul_1 {
+            get {
+                object obj = ResourceManager.GetObject("Desain tanpa judul 1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fi_br_add {
             get {
                 object obj = ResourceManager.GetObject("fi-br-add", resourceCulture);
