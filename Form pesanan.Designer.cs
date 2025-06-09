@@ -30,6 +30,7 @@
         {
             button1 = new Button();
             button2 = new Button();
+            button3 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -50,11 +51,21 @@
             button2.Text = "Ubah Status Pengerjaan";
             button2.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            button3.Location = new Point(680, 12);
+            button3.Name = "button3";
+            button3.Size = new Size(157, 34);
+            button3.TabIndex = 2;
+            button3.Text = "Edit Pesanan";
+            button3.UseVisualStyleBackColor = true;
+            // 
             // Form_pesanan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1373, 781);
+            Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "Form_pesanan";
@@ -66,5 +77,6 @@
 
         private Button button1;
         private Button button2;
+        private Button button3;
     }
 }
