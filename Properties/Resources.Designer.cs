@@ -83,6 +83,46 @@ namespace HaninLaundry.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fi_br_add {
+            get {
+                object obj = ResourceManager.GetObject("fi-br-add", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fi_br_sign_out {
+            get {
+                object obj = ResourceManager.GetObject("fi-br-sign-out", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fi_sr_archive {
+            get {
+                object obj = ResourceManager.GetObject("fi-sr-archive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fi_sr_archive1 {
+            get {
+                object obj = ResourceManager.GetObject("fi-sr-archive1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap laundry_5172266 {
             get {
                 object obj = ResourceManager.GetObject("laundry_5172266", resourceCulture);
@@ -126,6 +166,36 @@ namespace HaninLaundry.Properties {
         internal static System.Drawing.Bitmap login1 {
             get {
                 object obj = ResourceManager.GetObject("login1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Users {
+            get {
+                object obj = ResourceManager.GetObject("Users", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Vector {
+            get {
+                object obj = ResourceManager.GetObject("Vector", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Vector1 {
+            get {
+                object obj = ResourceManager.GetObject("Vector1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
