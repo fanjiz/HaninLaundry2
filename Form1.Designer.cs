@@ -32,26 +32,28 @@
             btnLogin = new Button();
             lblUsername = new Label();
             lblPassword = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            tbEmail = new TextBox();
+            tbPassword = new TextBox();
             panel1 = new Panel();
             panel2 = new Panel();
             label2 = new Label();
             panel3 = new Panel();
             label3 = new Label();
             pictureBox1 = new PictureBox();
+            panelWrapper = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelWrapper.SuspendLayout();
             SuspendLayout();
             // 
             // btnLogin
             // 
             btnLogin.BackColor = SystemColors.MenuHighlight;
             btnLogin.Font = new Font("Times New Roman", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLogin.Location = new Point(139, 215);
-            btnLogin.Margin = new Padding(2, 2, 2, 2);
+            btnLogin.Location = new Point(140, 221);
+            btnLogin.Margin = new Padding(2);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(78, 30);
             btnLogin.TabIndex = 2;
@@ -82,22 +84,24 @@
             lblPassword.TabIndex = 4;
             lblPassword.Text = "Password";
             // 
-            // textBox1
+            // tbEmail
             // 
-            textBox1.BackColor = SystemColors.HighlightText;
-            textBox1.Location = new Point(95, 114);
-            textBox1.Margin = new Padding(2, 2, 2, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(155, 23);
-            textBox1.TabIndex = 5;
+            tbEmail.BackColor = SystemColors.HighlightText;
+            tbEmail.Location = new Point(95, 114);
+            tbEmail.Margin = new Padding(2);
+            tbEmail.Name = "tbEmail";
+            tbEmail.Size = new Size(155, 23);
+            tbEmail.TabIndex = 5;
+            tbEmail.TextChanged += tbEmail_TextChanged;
             // 
-            // textBox2
+            // tbPassword
             // 
-            textBox2.Location = new Point(95, 169);
-            textBox2.Margin = new Padding(2, 2, 2, 2);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(155, 23);
-            textBox2.TabIndex = 6;
+            tbPassword.Location = new Point(95, 169);
+            tbPassword.Margin = new Padding(2);
+            tbPassword.Name = "tbPassword";
+            tbPassword.Size = new Size(155, 23);
+            tbPassword.TabIndex = 6;
+            tbPassword.TextChanged += tbPassword_TextChanged;
             // 
             // panel1
             // 
@@ -105,15 +109,15 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(lblUsername);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(tbEmail);
             panel1.Controls.Add(btnLogin);
-            panel1.Controls.Add(textBox2);
+            panel1.Controls.Add(tbPassword);
             panel1.Controls.Add(lblPassword);
             panel1.ForeColor = SystemColors.InactiveCaptionText;
-            panel1.Location = new Point(234, 91);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Location = new Point(20, 59);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Padding = new Padding(1, 1, 1, 1);
+            panel1.Padding = new Padding(1);
             panel1.Size = new Size(348, 292);
             panel1.TabIndex = 8;
             panel1.Paint += panel1_Paint;
@@ -123,7 +127,7 @@
             panel2.BackColor = SystemColors.MenuHighlight;
             panel2.Controls.Add(label2);
             panel2.Location = new Point(-1, -1);
-            panel2.Margin = new Padding(2, 2, 2, 2);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
             panel2.Size = new Size(348, 49);
             panel2.TabIndex = 8;
@@ -142,13 +146,13 @@
             // 
             // panel3
             // 
-            panel3.BackColor = SystemColors.GradientInactiveCaption;
+            panel3.BackColor = Color.Transparent;
             panel3.Controls.Add(label3);
             panel3.Controls.Add(pictureBox1);
-            panel3.Location = new Point(248, 19);
-            panel3.Margin = new Padding(2, 2, 2, 2);
+            panel3.Location = new Point(41, 17);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Padding = new Padding(1, 1, 1, 1);
+            panel3.Padding = new Padding(1);
             panel3.Size = new Size(318, 38);
             panel3.TabIndex = 9;
             panel3.Paint += panel3_Paint;
@@ -170,11 +174,21 @@
             pictureBox1.BackgroundImage = Properties.Resources.laundry_51722662;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
             pictureBox1.Location = new Point(10, 2);
-            pictureBox1.Margin = new Padding(2, 2, 2, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(38, 34);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            // 
+            // panelWrapper
+            // 
+            panelWrapper.BackColor = Color.Transparent;
+            panelWrapper.Controls.Add(panel3);
+            panelWrapper.Controls.Add(panel1);
+            panelWrapper.Location = new Point(46, 64);
+            panelWrapper.Name = "panelWrapper";
+            panelWrapper.Size = new Size(396, 374);
+            panelWrapper.TabIndex = 10;
             // 
             // Form1
             // 
@@ -183,13 +197,13 @@
             BackColor = SystemColors.ActiveCaption;
             BackgroundImage = Properties.Resources.login;
             ClientSize = new Size(800, 450);
-            Controls.Add(panel3);
-            Controls.Add(panel1);
+            Controls.Add(panelWrapper);
             ForeColor = SystemColors.ControlText;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             Text = "LoginForm";
             WindowState = FormWindowState.Maximized;
+            Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
@@ -197,6 +211,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panelWrapper.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -204,13 +219,14 @@
         private Button btnLogin;
         private Label lblUsername;
         private Label lblPassword;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox tbEmail;
+        private TextBox tbPassword;
         private Panel panel1;
         private Label label2;
         private Panel panel2;
         private Panel panel3;
         private PictureBox pictureBox1;
         private Label label3;
+        private Panel panelWrapper;
     }
 }
