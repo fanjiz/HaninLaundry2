@@ -36,16 +36,15 @@
             cbLayanan = new ComboBox();
             tbJumlah = new TextBox();
             label4 = new Label();
-            dgvPesanan = new DataGridView();
-            btnSimpan = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvPesanan).BeginInit();
+            btnSimpanPesanan = new Button();
+            btnBayar = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(35, 39);
+            label1.Location = new Point(23, 75);
             label1.Name = "label1";
             label1.Size = new Size(84, 21);
             label1.TabIndex = 0;
@@ -54,7 +53,7 @@
             // tbNohp
             // 
             tbNohp.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbNohp.Location = new Point(186, 36);
+            tbNohp.Location = new Point(174, 72);
             tbNohp.Name = "tbNohp";
             tbNohp.Size = new Size(184, 29);
             tbNohp.TabIndex = 1;
@@ -63,7 +62,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(35, 94);
+            label2.Location = new Point(23, 130);
             label2.Name = "label2";
             label2.Size = new Size(128, 21);
             label2.TabIndex = 2;
@@ -72,7 +71,7 @@
             // tbNamaplg
             // 
             tbNamaplg.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbNamaplg.Location = new Point(186, 91);
+            tbNamaplg.Location = new Point(174, 127);
             tbNamaplg.Name = "tbNamaplg";
             tbNamaplg.Size = new Size(184, 29);
             tbNamaplg.TabIndex = 3;
@@ -82,7 +81,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(35, 154);
+            label3.Location = new Point(23, 190);
             label3.Name = "label3";
             label3.Size = new Size(114, 21);
             label3.TabIndex = 4;
@@ -93,7 +92,7 @@
             cbLayanan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbLayanan.FormattingEnabled = true;
             cbLayanan.Items.AddRange(new object[] { "Cuci + Setrika (kg)", "Cuci + Lipat (kg)" });
-            cbLayanan.Location = new Point(186, 156);
+            cbLayanan.Location = new Point(174, 192);
             cbLayanan.Name = "cbLayanan";
             cbLayanan.Size = new Size(184, 29);
             cbLayanan.TabIndex = 5;
@@ -101,7 +100,7 @@
             // tbJumlah
             // 
             tbJumlah.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbJumlah.Location = new Point(186, 217);
+            tbJumlah.Location = new Point(174, 253);
             tbJumlah.Name = "tbJumlah";
             tbJumlah.Size = new Size(184, 29);
             tbJumlah.TabIndex = 6;
@@ -110,40 +109,40 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(35, 220);
+            label4.Location = new Point(23, 256);
             label4.Name = "label4";
             label4.Size = new Size(60, 21);
             label4.TabIndex = 7;
             label4.Text = "Jumlah";
             // 
-            // dgvPesanan
+            // btnSimpanPesanan
             // 
-            dgvPesanan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPesanan.Location = new Point(410, 39);
-            dgvPesanan.Margin = new Padding(2);
-            dgvPesanan.Name = "dgvPesanan";
-            dgvPesanan.RowHeadersWidth = 62;
-            dgvPesanan.Size = new Size(729, 319);
-            dgvPesanan.TabIndex = 8;
+            btnSimpanPesanan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSimpanPesanan.Location = new Point(23, 314);
+            btnSimpanPesanan.Name = "btnSimpanPesanan";
+            btnSimpanPesanan.Size = new Size(150, 48);
+            btnSimpanPesanan.TabIndex = 9;
+            btnSimpanPesanan.Text = "Simpan Pesanan";
+            btnSimpanPesanan.UseVisualStyleBackColor = true;
+            btnSimpanPesanan.Click += btnSimpan_Click;
             // 
-            // btnSimpan
+            // btnBayar
             // 
-            btnSimpan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSimpan.Location = new Point(35, 278);
-            btnSimpan.Name = "btnSimpan";
-            btnSimpan.Size = new Size(335, 31);
-            btnSimpan.TabIndex = 9;
-            btnSimpan.Text = "Simpan";
-            btnSimpan.UseVisualStyleBackColor = true;
-            btnSimpan.Click += btnSimpan_Click;
+            btnBayar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBayar.Location = new Point(208, 314);
+            btnBayar.Name = "btnBayar";
+            btnBayar.Size = new Size(150, 48);
+            btnBayar.TabIndex = 10;
+            btnBayar.Text = "Bayar Sekarang";
+            btnBayar.UseVisualStyleBackColor = true;
             // 
             // FormTambahPesanan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1178, 450);
-            Controls.Add(btnSimpan);
-            Controls.Add(dgvPesanan);
+            ClientSize = new Size(413, 413);
+            Controls.Add(btnBayar);
+            Controls.Add(btnSimpanPesanan);
             Controls.Add(label4);
             Controls.Add(tbJumlah);
             Controls.Add(cbLayanan);
@@ -153,8 +152,8 @@
             Controls.Add(tbNohp);
             Controls.Add(label1);
             Name = "FormTambahPesanan";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormTambahPesanan";
-            ((System.ComponentModel.ISupportInitialize)dgvPesanan).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -170,6 +169,7 @@
         private TextBox tbJumlah;
         private Label label4;
         private DataGridView dgvPesanan;
-        private Button btnSimpan;
+        private Button btnSimpanPesanan;
+        private Button btnBayar;
     }
 }

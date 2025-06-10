@@ -12,9 +12,10 @@ using MySql.Data.MySqlClient;
 
 namespace HaninLaundry
 {
+
     public partial class FormPesanan : Form
     {
-
+        private int selectedIdPesanan = -1;
 
         public FormPesanan()
         {
@@ -30,27 +31,33 @@ namespace HaninLaundry
                 {
                     conn.Open();
                     string query = @"
-                SELECT 
-                    u.nama AS petugas,
-                    p.nama_plg AS nama_pelanggan,
-                    p.no_hp_plg AS no_hp_pelanggan,
-                    l.nama_layanan,
-                    l.harga,
-                    ps.jumlah,
-                    (l.harga * ps.jumlah) AS total_harga,
-                    ps.tgl_masuk
-                FROM pesanan ps
-                JOIN user u ON ps.id_user = u.id_user
-                JOIN pelanggan p ON ps.id_plg = p.id_plg
-                JOIN layanan l ON ps.id_layanan = l.id_layanan
-            ";
+                    SELECT 
+                        ps.id_pesanan,  -- ⬅️ Tambahkan ini
+                        u.nama AS petugas,
+                        p.nama_plg AS nama_pelanggan,
+                        p.no_hp_plg AS no_hp_pelanggan,
+                        l.nama_layanan,
+                        l.harga,
+                        ps.jumlah,
+                        (l.harga * ps.jumlah) AS total_harga,
+                        ps.tgl_masuk,
+                        ps.status_pengerjaan
+                    FROM pesanan ps
+                    JOIN user u ON ps.id_user = u.id_user
+                    JOIN pelanggan p ON ps.id_plg = p.id_plg
+                    JOIN layanan l ON ps.id_layanan = l.id_layanan
+                    ORDER BY ps.tgl_masuk DESC, ps.id_pesanan DESC
+                    ";
 
                     MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dgvPesanan.DataSource = dt;
 
-                    // Optional: Ganti header kolom agar lebih user-friendly
+                    dgvPesanan.Columns["id_pesanan"].Visible = false;
+
+
+                    // Header kolom agar lebih rapi
                     dgvPesanan.Columns["petugas"].HeaderText = "Petugas";
                     dgvPesanan.Columns["nama_pelanggan"].HeaderText = "Nama Pelanggan";
                     dgvPesanan.Columns["no_hp_pelanggan"].HeaderText = "No. HP";
@@ -59,6 +66,7 @@ namespace HaninLaundry
                     dgvPesanan.Columns["jumlah"].HeaderText = "Jumlah";
                     dgvPesanan.Columns["total_harga"].HeaderText = "Total Harga";
                     dgvPesanan.Columns["tgl_masuk"].HeaderText = "Tanggal Masuk";
+                    dgvPesanan.Columns["status_pengerjaan"].HeaderText = "Status";
                 }
                 catch (Exception ex)
                 {
@@ -67,30 +75,104 @@ namespace HaninLaundry
             }
         }
 
-
-        private void button4_Click(object sender, EventArgs e)
+        private void btnBayarPesanan_Click_1(object sender, EventArgs e)
         {
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnTambahPesanan_Click(object sender, EventArgs e)
         {
-
+            new FormTambahPesanan().ShowDialog();
+            this.Show();
+            LoadData();
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void dgvPesanan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                object valueSelectedId = dgvPesanan.Rows[e.RowIndex].Cells["id_pesanan"].Value;
+                selectedIdPesanan = (valueSelectedId != null && valueSelectedId != DBNull.Value)
+                    ? Convert.ToInt32(valueSelectedId)
+                    : -1;
 
+                string status = dgvPesanan.Rows[e.RowIndex].Cells["status_pengerjaan"].Value?.ToString() ?? "";
+                cbStatusPengerjaan.SelectedItem = status;
+            }
         }
 
-        private void pictureBox3_Click(object sender, EventArgs e)
+        private void btnSimpan_Click(object sender, EventArgs e)
         {
+            if (selectedIdPesanan == -1)
+            {
+                MessageBox.Show("Silakan pilih pesanan terlebih dahulu.");
+                return;
+            }
 
+            string statusBaru = cbStatusPengerjaan.SelectedItem?.ToString();
+            if (string.IsNullOrEmpty(statusBaru))
+            {
+                MessageBox.Show("Silakan pilih status pengerjaan.");
+                return;
+            }
+
+            using (MySqlConnection conn = new MySqlConnection(DBConfig.ConnStr))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "UPDATE pesanan SET status_pengerjaan = @status WHERE id_pesanan = @id";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@status", statusBaru);
+                    cmd.Parameters.AddWithValue("@id", selectedIdPesanan);
+
+                    cmd.ExecuteNonQuery();
+                    LoadData();
+                    MessageBox.Show("Status pesanan berhasil diperbarui!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal update status: " + ex.Message);
+                }
+            }
         }
 
-        private void btnbayarpesanan_Click(object sender, EventArgs e)
+        private void btnHapus_Click(object sender, EventArgs e)
         {
+            if (selectedIdPesanan == -1)
+            {
+                MessageBox.Show("Silakan pilih data pesanan yang ingin dihapus.");
+                return;
+            }
 
+            DialogResult result = MessageBox.Show(
+                "Yakin ingin menghapus data pesanan ini?",
+                "Konfirmasi",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (result != DialogResult.Yes) return;
+
+            using (MySqlConnection conn = new MySqlConnection(DBConfig.ConnStr))
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "DELETE FROM pesanan WHERE id_pesanan = @id";
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@id", selectedIdPesanan);
+                    cmd.ExecuteNonQuery();
+
+                    LoadData();
+                    MessageBox.Show("Data pesanan berhasil dihapus.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal hapus: " + ex.Message);
+                }
+            }
         }
     }
 }

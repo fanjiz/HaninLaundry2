@@ -85,7 +85,8 @@ namespace HaninLaundry
                                     ClearForm();
                                     MessageBox.Show("Login berhasil!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                    new FormTambahPesanan().ShowDialog();
+                                    this.Hide();
+                                    new FormPesanan().ShowDialog();
                                     this.Show();
                                 }
                                 else
