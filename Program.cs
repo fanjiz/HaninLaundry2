@@ -13,7 +13,7 @@ namespace HaninLaundry
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1()); // Ganti FormMain dengan form kamu
+            Application.Run(new FormLogin()); // Ganti FormMain dengan form kamu
         }
     }
 }

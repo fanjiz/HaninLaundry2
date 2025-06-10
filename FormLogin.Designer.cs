@@ -1,6 +1,6 @@
 ﻿namespace HaninLaundry
 {
-    partial class Form1
+    partial class FormLogin
     {
         /// <summary>
         ///  Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             btnLogin = new Button();
             lblUsername = new Label();
             lblPassword = new Label();
@@ -59,6 +59,7 @@
             btnLogin.TabIndex = 2;
             btnLogin.Text = "Masuk";
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += btnLogin_Click;
             // 
             // lblUsername
             // 
@@ -99,6 +100,7 @@
             tbPassword.Location = new Point(95, 169);
             tbPassword.Margin = new Padding(2);
             tbPassword.Name = "tbPassword";
+            tbPassword.PasswordChar = '*';
             tbPassword.Size = new Size(155, 23);
             tbPassword.TabIndex = 6;
             tbPassword.TextChanged += tbPassword_TextChanged;
@@ -190,7 +192,7 @@
             panelWrapper.Size = new Size(396, 374);
             panelWrapper.TabIndex = 10;
             // 
-            // Form1
+            // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -200,7 +202,7 @@
             Controls.Add(panelWrapper);
             ForeColor = SystemColors.ControlText;
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Form1";
+            Name = "FormLogin";
             Text = "LoginForm";
             WindowState = FormWindowState.Maximized;
             Load += Form1_Load;

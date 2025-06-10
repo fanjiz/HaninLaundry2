@@ -1,6 +1,6 @@
 ﻿namespace HaninLaundry
 {
-    partial class Form_pesanan
+    partial class FormPesanan
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_pesanan));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPesanan));
             btnbayarpesanan = new Button();
             btnubahstatuspengerjaan = new Button();
             btneditpesanan = new Button();
@@ -43,9 +43,9 @@
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
             panel3 = new Panel();
+            pictureBox4 = new PictureBox();
             panel4 = new Panel();
             panel5 = new Panel();
-            pictureBox4 = new PictureBox();
             pictureBox5 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -53,9 +53,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             SuspendLayout();
             // 
@@ -63,9 +63,10 @@
             // 
             btnbayarpesanan.BackColor = SystemColors.MenuHighlight;
             btnbayarpesanan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnbayarpesanan.Location = new Point(242, 82);
+            btnbayarpesanan.Location = new Point(169, 49);
+            btnbayarpesanan.Margin = new Padding(2);
             btnbayarpesanan.Name = "btnbayarpesanan";
-            btnbayarpesanan.Size = new Size(157, 34);
+            btnbayarpesanan.Size = new Size(110, 20);
             btnbayarpesanan.TabIndex = 0;
             btnbayarpesanan.Text = "Bayar Pesanan";
             btnbayarpesanan.UseVisualStyleBackColor = false;
@@ -75,9 +76,10 @@
             // 
             btnubahstatuspengerjaan.BackColor = SystemColors.MenuHighlight;
             btnubahstatuspengerjaan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnubahstatuspengerjaan.Location = new Point(428, 82);
+            btnubahstatuspengerjaan.Location = new Point(300, 49);
+            btnubahstatuspengerjaan.Margin = new Padding(2);
             btnubahstatuspengerjaan.Name = "btnubahstatuspengerjaan";
-            btnubahstatuspengerjaan.Size = new Size(232, 34);
+            btnubahstatuspengerjaan.Size = new Size(162, 20);
             btnubahstatuspengerjaan.TabIndex = 1;
             btnubahstatuspengerjaan.Text = "Ubah Status Pengerjaan";
             btnubahstatuspengerjaan.UseVisualStyleBackColor = false;
@@ -86,9 +88,10 @@
             // 
             btneditpesanan.BackColor = Color.Coral;
             btneditpesanan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btneditpesanan.Location = new Point(700, 82);
+            btneditpesanan.Location = new Point(490, 49);
+            btneditpesanan.Margin = new Padding(2);
             btneditpesanan.Name = "btneditpesanan";
-            btneditpesanan.Size = new Size(157, 34);
+            btneditpesanan.Size = new Size(110, 20);
             btneditpesanan.TabIndex = 2;
             btneditpesanan.Text = "Edit Pesanan";
             btneditpesanan.UseVisualStyleBackColor = false;
@@ -97,9 +100,10 @@
             // 
             btnhapuspesanan.BackColor = Color.FromArgb(192, 0, 0);
             btnhapuspesanan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnhapuspesanan.Location = new Point(901, 82);
+            btnhapuspesanan.Location = new Point(631, 49);
+            btnhapuspesanan.Margin = new Padding(2);
             btnhapuspesanan.Name = "btnhapuspesanan";
-            btnhapuspesanan.Size = new Size(157, 34);
+            btnhapuspesanan.Size = new Size(110, 20);
             btnhapuspesanan.TabIndex = 3;
             btnhapuspesanan.Text = "Hapus Pesanan";
             btnhapuspesanan.UseVisualStyleBackColor = false;
@@ -107,18 +111,20 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(1134, 85);
+            textBox1.Location = new Point(794, 51);
+            textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(150, 31);
+            textBox1.Size = new Size(106, 23);
             textBox1.TabIndex = 4;
             // 
             // btntambahpesanan
             // 
             btntambahpesanan.BackColor = SystemColors.MenuHighlight;
             btntambahpesanan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btntambahpesanan.Location = new Point(242, 153);
+            btntambahpesanan.Location = new Point(169, 92);
+            btntambahpesanan.Margin = new Padding(2);
             btntambahpesanan.Name = "btntambahpesanan";
-            btntambahpesanan.Size = new Size(225, 34);
+            btntambahpesanan.Size = new Size(158, 20);
             btntambahpesanan.TabIndex = 5;
             btntambahpesanan.Text = "Tambah Pesanan";
             btntambahpesanan.UseVisualStyleBackColor = false;
@@ -128,9 +134,10 @@
             // 
             btnsegarkan.BackColor = SystemColors.MenuHighlight;
             btnsegarkan.Font = new Font("Times New Roman", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnsegarkan.Location = new Point(502, 153);
+            btnsegarkan.Location = new Point(351, 92);
+            btnsegarkan.Margin = new Padding(2);
             btnsegarkan.Name = "btnsegarkan";
-            btnsegarkan.Size = new Size(168, 34);
+            btnsegarkan.Size = new Size(118, 20);
             btnsegarkan.TabIndex = 6;
             btnsegarkan.Text = "Segarkan";
             btnsegarkan.UseVisualStyleBackColor = false;
@@ -138,37 +145,41 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(242, 256);
+            dataGridView1.Location = new Point(169, 154);
+            dataGridView1.Margin = new Padding(2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(1042, 314);
+            dataGridView1.Size = new Size(729, 188);
             dataGridView1.TabIndex = 7;
             // 
             // panel1
             // 
             panel1.BackgroundImage = Properties.Resources.laundry_5172266;
             panel1.BackgroundImageLayout = ImageLayout.Zoom;
-            panel1.Location = new Point(23, 14);
+            panel1.Location = new Point(16, 8);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(69, 76);
+            panel1.Size = new Size(48, 46);
             panel1.TabIndex = 8;
             // 
             // panel2
             // 
             panel2.BackColor = SystemColors.MenuHighlight;
             panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(23, 123);
+            panel2.Location = new Point(16, 74);
+            panel2.Margin = new Padding(2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(69, 50);
+            panel2.Size = new Size(48, 30);
             panel2.TabIndex = 9;
             // 
             // pictureBox1
             // 
             pictureBox1.BackgroundImage = Properties.Resources.fi_sr_archive;
             pictureBox1.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox1.Location = new Point(3, 3);
+            pictureBox1.Location = new Point(2, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(63, 44);
+            pictureBox1.Size = new Size(44, 26);
             pictureBox1.TabIndex = 10;
             pictureBox1.TabStop = false;
             // 
@@ -176,9 +187,10 @@
             // 
             pictureBox2.BackgroundImage = Properties.Resources.fi_br_sign_out;
             pictureBox2.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox2.Location = new Point(3, 3);
+            pictureBox2.Location = new Point(2, 2);
+            pictureBox2.Margin = new Padding(2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(63, 44);
+            pictureBox2.Size = new Size(44, 26);
             pictureBox2.TabIndex = 11;
             pictureBox2.TabStop = false;
             // 
@@ -186,9 +198,10 @@
             // 
             pictureBox3.BackgroundImage = Properties.Resources.Users;
             pictureBox3.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox3.Location = new Point(3, 3);
+            pictureBox3.Location = new Point(2, 2);
+            pictureBox3.Margin = new Padding(2);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(63, 44);
+            pictureBox3.Size = new Size(44, 26);
             pictureBox3.TabIndex = 11;
             pictureBox3.TabStop = false;
             pictureBox3.Click += pictureBox3_Click;
@@ -197,55 +210,60 @@
             // 
             panel3.BackColor = SystemColors.MenuHighlight;
             panel3.Controls.Add(pictureBox4);
-            panel3.Location = new Point(23, 204);
+            panel3.Location = new Point(16, 122);
+            panel3.Margin = new Padding(2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(69, 50);
+            panel3.Size = new Size(48, 30);
             panel3.TabIndex = 10;
+            // 
+            // pictureBox4
+            // 
+            pictureBox4.BackgroundImage = Properties.Resources.Vector1;
+            pictureBox4.BackgroundImageLayout = ImageLayout.Center;
+            pictureBox4.Location = new Point(2, 2);
+            pictureBox4.Margin = new Padding(2);
+            pictureBox4.Name = "pictureBox4";
+            pictureBox4.Size = new Size(44, 26);
+            pictureBox4.TabIndex = 12;
+            pictureBox4.TabStop = false;
             // 
             // panel4
             // 
             panel4.BackColor = SystemColors.MenuHighlight;
             panel4.Controls.Add(pictureBox3);
-            panel4.Location = new Point(23, 278);
+            panel4.Location = new Point(16, 167);
+            panel4.Margin = new Padding(2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(69, 50);
+            panel4.Size = new Size(48, 30);
             panel4.TabIndex = 10;
             // 
             // panel5
             // 
             panel5.BackColor = SystemColors.MenuHighlight;
             panel5.Controls.Add(pictureBox2);
-            panel5.Location = new Point(23, 361);
+            panel5.Location = new Point(16, 217);
+            panel5.Margin = new Padding(2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(69, 50);
+            panel5.Size = new Size(48, 30);
             panel5.TabIndex = 11;
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackgroundImage = Properties.Resources.Vector1;
-            pictureBox4.BackgroundImageLayout = ImageLayout.Center;
-            pictureBox4.Location = new Point(3, 3);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(63, 44);
-            pictureBox4.TabIndex = 12;
-            pictureBox4.TabStop = false;
             // 
             // pictureBox5
             // 
             pictureBox5.BackColor = SystemColors.MenuHighlight;
             pictureBox5.BackgroundImage = Properties.Resources.Desain_tanpa_judul_1;
             pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox5.Location = new Point(1325, 14);
+            pictureBox5.Location = new Point(928, 8);
+            pictureBox5.Margin = new Padding(2);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(36, 36);
+            pictureBox5.Size = new Size(25, 22);
             pictureBox5.TabIndex = 0;
             pictureBox5.TabStop = false;
             // 
-            // Form_pesanan
+            // FormPesanan
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1373, 781);
+            ClientSize = new Size(961, 469);
             Controls.Add(pictureBox5);
             Controls.Add(panel5);
             Controls.Add(panel4);
@@ -261,7 +279,9 @@
             Controls.Add(btnubahstatuspengerjaan);
             Controls.Add(btnbayarpesanan);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Name = "Form_pesanan";
+            Margin = new Padding(2);
+            Name = "FormPesanan";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form_pesanan";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
@@ -269,9 +289,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             panel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel4.ResumeLayout(false);
             panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ResumeLayout(false);
             PerformLayout();
