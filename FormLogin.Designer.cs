@@ -187,7 +187,7 @@
             panelWrapper.BackColor = Color.Transparent;
             panelWrapper.Controls.Add(panel3);
             panelWrapper.Controls.Add(panel1);
-            panelWrapper.Location = new Point(46, 64);
+            panelWrapper.Location = new Point(182, 50);
             panelWrapper.Name = "panelWrapper";
             panelWrapper.Size = new Size(396, 374);
             panelWrapper.TabIndex = 10;

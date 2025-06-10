@@ -36,7 +36,7 @@
             textBox1 = new TextBox();
             btntambahpesanan = new Button();
             btnsegarkan = new Button();
-            dataGridView1 = new DataGridView();
+            dgvPesanan = new DataGridView();
             panel1 = new Panel();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
@@ -47,7 +47,7 @@
             panel4 = new Panel();
             panel5 = new Panel();
             pictureBox5 = new PictureBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPesanan).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -142,15 +142,15 @@
             btnsegarkan.Text = "Segarkan";
             btnsegarkan.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dgvPesanan
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(169, 154);
-            dataGridView1.Margin = new Padding(2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 62;
-            dataGridView1.Size = new Size(729, 188);
-            dataGridView1.TabIndex = 7;
+            dgvPesanan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPesanan.Location = new Point(169, 154);
+            dgvPesanan.Margin = new Padding(2);
+            dgvPesanan.Name = "dgvPesanan";
+            dgvPesanan.RowHeadersWidth = 62;
+            dgvPesanan.Size = new Size(729, 188);
+            dgvPesanan.TabIndex = 7;
             // 
             // panel1
             // 
@@ -271,7 +271,7 @@
             Controls.Add(panel2);
             Controls.Add(panel1);
             Controls.Add(btntambahpesanan);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvPesanan);
             Controls.Add(btnsegarkan);
             Controls.Add(textBox1);
             Controls.Add(btnhapuspesanan);
@@ -283,7 +283,7 @@
             Name = "FormPesanan";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form_pesanan";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvPesanan).EndInit();
             panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
@@ -306,7 +306,7 @@
         private TextBox textBox1;
         private Button btntambahpesanan;
         private Button btnsegarkan;
-        private DataGridView dataGridView1;
+        private DataGridView dgvPesanan;
         private Panel panel1;
         private Panel panel2;
         private PictureBox pictureBox1;

@@ -9,22 +9,13 @@ namespace HaninLaundry
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void ClearForm()
         {
-
-        }
-
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
+            tbEmail.Clear();
+            tbPassword.Clear();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click_2(object sender, EventArgs e)
         {
 
         }
@@ -64,7 +55,7 @@ namespace HaninLaundry
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("email dan Password harus diisi", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Email dan Password harus diisi", "Validasi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -73,30 +64,39 @@ namespace HaninLaundry
                 try
                 {
                     conn.Open();
-                    string query = "SELECT password FROM user WHERE email = @email";
+                    string query = "SELECT id_user, email, password, role FROM user WHERE email = @email";
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@email", email);
 
-                        object result = cmd.ExecuteScalar();
-
-                        if (result != null)
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
                         {
-                            string hashedPassword = result.ToString();
-
-                            if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+                            if (reader.Read())
                             {
-                                MessageBox.Show("Login berhasil!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                new FormPesanan().ShowDialog();
+                                string hashedPassword = reader["password"].ToString();
+
+                                if (BCrypt.Net.BCrypt.Verify(password, hashedPassword))
+                                {
+                                    // SET session
+                                    SessionUser.IdUser = Convert.ToInt32(reader["id_user"]);
+                                    SessionUser.Email = reader["email"].ToString();
+                                    SessionUser.Role = reader["role"].ToString();
+
+                                    ClearForm();
+                                    MessageBox.Show("Login berhasil!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    new FormTambahPesanan().ShowDialog();
+                                    this.Show();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Password salah!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Password salah!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Email tidak ditemukan!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("email tidak ditemukan!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
