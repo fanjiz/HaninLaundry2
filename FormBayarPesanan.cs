@@ -69,7 +69,6 @@ namespace HaninLaundry
             }
         }
 
-
         private void TampilkanDetailVertikal(DataRow row)
         {
             DataTable dt = new DataTable();
@@ -84,7 +83,7 @@ namespace HaninLaundry
             dt.Rows.Add("Jumlah", row["jumlah"]);
             dt.Rows.Add("Total Harga", row["total_harga"]);
             DateTime tglMasuk = Convert.ToDateTime(row["tgl_masuk"]);
-            dt.Rows.Add("Tanggal Masuk", tglMasuk.ToString("dd/MM/yyyy"));
+            dt.Rows.Add("Tanggal Masuk", tglMasuk.ToString("dd/MM/yyyy HH:mm:ss"));
             dt.Rows.Add("Status", row["status_pengerjaan"]);
             dt.Rows.Add("Pembayaran", row["pembayaran"]);
 
@@ -104,48 +103,83 @@ namespace HaninLaundry
                 return;
             }
 
-            decimal totalHarga = 0;
-
             using (MySqlConnection conn = new MySqlConnection(DBConfig.ConnStr))
             {
                 try
                 {
                     conn.Open();
 
-                    // 1. Ambil total harga dari database berdasarkan _idPesanan
-                    string getTotalQuery = "SELECT total_harga FROM pesanan WHERE id_pesanan = @id";
-                    using (MySqlCommand cmd = new MySqlCommand(getTotalQuery, conn))
+                    // Ambil semua data pesanan
+                    string getPesananQuery = @"SELECT id_plg, id_user, id_layanan, jumlah, total_harga, tgl_masuk
+                                       FROM pesanan WHERE id_pesanan = @id";
+                    int id_plg = 0, id_user = 0, id_layanan = 0, jumlah = 0;
+                    decimal totalHarga = 0;
+                    DateTime tglMasuk;
+
+                    using (MySqlCommand cmd = new MySqlCommand(getPesananQuery, conn))
                     {
                         cmd.Parameters.AddWithValue("@id", _idPesanan);
-                        object result = cmd.ExecuteScalar();
-
-                        if (result == null || result == DBNull.Value)
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            MessageBox.Show("Data pesanan tidak ditemukan.");
-                            return;
+                            if (reader.Read())
+                            {
+                                id_plg = Convert.ToInt32(reader["id_plg"]);
+                                id_user = Convert.ToInt32(reader["id_user"]);
+                                id_layanan = Convert.ToInt32(reader["id_layanan"]);
+                                jumlah = Convert.ToInt32(reader["jumlah"]);
+                                totalHarga = Convert.ToDecimal(reader["total_harga"]);
+                                tglMasuk = Convert.ToDateTime(reader["tgl_masuk"]);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Data pesanan tidak ditemukan.");
+                                return;
+                            }
                         }
-
-                        totalHarga = Convert.ToDecimal(result);
                     }
 
+                    // Validasi uang diterima
                     if (uangDiterima < totalHarga)
                     {
                         MessageBox.Show("Uang yang diterima kurang dari total pembayaran.");
                         return;
                     }
 
-                    // 2. Update status pembayaran
-                    string updateQuery = "UPDATE pesanan SET pembayaran = 'Sudah bayar' WHERE id_pesanan = @id";
-                    using (MySqlCommand updateCmd = new MySqlCommand(updateQuery, conn))
+                    // Hitung kembalian
+                    decimal uangKembali = uangDiterima - totalHarga;
+
+                    // Update status pembayaran di pesanan
+                    string updatePesanan = "UPDATE pesanan SET pembayaran = 'Sudah bayar' WHERE id_pesanan = @id";
+                    using (MySqlCommand updateCmd = new MySqlCommand(updatePesanan, conn))
                     {
                         updateCmd.Parameters.AddWithValue("@id", _idPesanan);
                         updateCmd.ExecuteNonQuery();
                     }
 
-                    // 3. Hitung dan tampilkan kembalian
-                    decimal kembalian = uangDiterima - totalHarga;
-                    MessageBox.Show($"Pembayaran berhasil.\nKembalian: Rp {kembalian:N0}", "Pembayaran", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Insert ke tabel pembayaran
+                    string insertPembayaran = @"
+                    INSERT INTO pembayaran 
+                    (id_pesanan, id_plg, id_user, id_layanan, jumlah, total_harga, uang_diterima, uang_kembali, tgl_masuk, waktu_bayar)
+                    VALUES
+                    (@idpesanan, @idplg, @iduser, @idlayanan, @jumlah, @total, @uang_diterima, @uang_kembali, @tglmasuk, @waktuBayar)";
+                    using (MySqlCommand insertCmd = new MySqlCommand(insertPembayaran, conn))
+                    {
+                        insertCmd.Parameters.AddWithValue("@idpesanan", _idPesanan);
+                        insertCmd.Parameters.AddWithValue("@idplg", id_plg);
+                        insertCmd.Parameters.AddWithValue("@iduser", id_user);
+                        insertCmd.Parameters.AddWithValue("@idlayanan", id_layanan);
+                        insertCmd.Parameters.AddWithValue("@jumlah", jumlah);
+                        insertCmd.Parameters.AddWithValue("@total", totalHarga);
+                        insertCmd.Parameters.AddWithValue("@uang_diterima", uangDiterima);
+                        insertCmd.Parameters.AddWithValue("@uang_kembali", uangKembali);
+                        insertCmd.Parameters.AddWithValue("@tglmasuk", tglMasuk);
+                        insertCmd.Parameters.AddWithValue("@waktuBayar", DateTime.Now);
 
+                        insertCmd.ExecuteNonQuery();
+                    }
+
+                    // Selesai
+                    MessageBox.Show($"Pembayaran berhasil.\nKembalian: Rp {uangKembali:N0}", "Pembayaran", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 catch (Exception ex)

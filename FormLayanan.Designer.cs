@@ -1,6 +1,6 @@
 ﻿namespace HaninLaundry
 {
-    partial class FormKaryawan
+    partial class FormLayanan
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             SuspendLayout();
             // 
-            // FormKaryawan
+            // FormLayanan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(713, 412);
-            Name = "FormKaryawan";
-            Text = "FormKaryawan";
+            Name = "FormLayanan";
+            Text = "Layanan";
             ResumeLayout(false);
         }
 

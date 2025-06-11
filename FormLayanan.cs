@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace HaninLaundry
 {
-    public partial class FormKaryawan: Form
+    public partial class FormLayanan: Form
     {
-        public FormKaryawan()
+        public FormLayanan()
         {
             InitializeComponent();
         }

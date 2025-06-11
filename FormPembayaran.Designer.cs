@@ -28,36 +28,91 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dgvPembayaran = new DataGridView();
+            btnSimpan = new Button();
+            btnPrev = new Button();
+            btnNext = new Button();
+            lblPageInfo = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvPembayaran).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvPembayaran
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AllowUserToOrderColumns = true;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(30, 30);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(654, 285);
-            dataGridView1.TabIndex = 0;
+            dgvPembayaran.AllowUserToAddRows = false;
+            dgvPembayaran.AllowUserToDeleteRows = false;
+            dgvPembayaran.AllowUserToOrderColumns = true;
+            dgvPembayaran.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPembayaran.Location = new Point(30, 30);
+            dgvPembayaran.Name = "dgvPembayaran";
+            dgvPembayaran.ReadOnly = true;
+            dgvPembayaran.Size = new Size(542, 285);
+            dgvPembayaran.TabIndex = 0;
+            // 
+            // btnSimpan
+            // 
+            btnSimpan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSimpan.Location = new Point(30, 395);
+            btnSimpan.Name = "btnSimpan";
+            btnSimpan.Size = new Size(149, 49);
+            btnSimpan.TabIndex = 16;
+            btnSimpan.Text = "Cetak Laporan";
+            btnSimpan.UseVisualStyleBackColor = true;
+            // 
+            // btnPrev
+            // 
+            btnPrev.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnPrev.Location = new Point(30, 331);
+            btnPrev.Name = "btnPrev";
+            btnPrev.Size = new Size(71, 39);
+            btnPrev.TabIndex = 17;
+            btnPrev.Text = "Prev";
+            btnPrev.UseVisualStyleBackColor = true;
+            btnPrev.Click += btnPrev_Click;
+            // 
+            // btnNext
+            // 
+            btnNext.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnNext.Location = new Point(108, 331);
+            btnNext.Name = "btnNext";
+            btnNext.Size = new Size(71, 39);
+            btnNext.TabIndex = 18;
+            btnNext.Text = "Next";
+            btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
+            // 
+            // lblPageInfo
+            // 
+            lblPageInfo.AutoSize = true;
+            lblPageInfo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblPageInfo.Location = new Point(443, 340);
+            lblPageInfo.Name = "lblPageInfo";
+            lblPageInfo.Size = new Size(129, 21);
+            lblPageInfo.TabIndex = 19;
+            lblPageInfo.Text = "Halaman 1 dari 2";
             // 
             // FormPembayaran
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(713, 484);
-            Controls.Add(dataGridView1);
+            ClientSize = new Size(604, 484);
+            Controls.Add(lblPageInfo);
+            Controls.Add(btnNext);
+            Controls.Add(btnPrev);
+            Controls.Add(btnSimpan);
+            Controls.Add(dgvPembayaran);
             Name = "FormPembayaran";
-            Text = "Pembayaran";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Text = "Riwayat Pembayaran";
+            ((System.ComponentModel.ISupportInitialize)dgvPembayaran).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgvPembayaran;
+        private Button btnSimpan;
+        private Button btnPrev;
+        private Button btnNext;
+        private Label lblPageInfo;
     }
 }

@@ -190,12 +190,13 @@ namespace HaninLaundry
                     string insertPesanan = @"INSERT INTO pesanan 
                 (id_user, id_plg, id_layanan, jumlah, tgl_masuk, total_harga)
                 VALUES 
-                (@iduser, @idplg, @idlayanan, @jumlah, CURDATE(), @total)";
+                (@iduser, @idplg, @idlayanan, @jumlah, @tgl_masuk, @total)";
                     MySqlCommand cmd = new MySqlCommand(insertPesanan, conn);
                     cmd.Parameters.AddWithValue("@iduser", SessionUser.IdUser);
                     cmd.Parameters.AddWithValue("@idplg", idPelanggan);
                     cmd.Parameters.AddWithValue("@idlayanan", idLayanan);
                     cmd.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmd.Parameters.AddWithValue("@tgl_masuk", DateTime.Now);
                     cmd.Parameters.AddWithValue("@total", total);
 
                     cmd.ExecuteNonQuery();
@@ -264,12 +265,13 @@ namespace HaninLaundry
                     string insertPesanan = @"INSERT INTO pesanan 
                 (id_user, id_plg, id_layanan, jumlah, tgl_masuk, total_harga, pembayaran, status_pengerjaan)
                 VALUES 
-                (@iduser, @idplg, @idlayanan, @jumlah, CURDATE(), @total, 'Belum bayar', 'Menunggu')";
+                (@iduser, @idplg, @idlayanan, @jumlah, @tgl_masuk, @total, 'Belum bayar', 'Menunggu')";
                     MySqlCommand cmd = new MySqlCommand(insertPesanan, conn);
                     cmd.Parameters.AddWithValue("@iduser", SessionUser.IdUser);
                     cmd.Parameters.AddWithValue("@idplg", idPelanggan);
                     cmd.Parameters.AddWithValue("@idlayanan", idLayanan);
                     cmd.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmd.Parameters.AddWithValue("@tgl_masuk", DateTime.Now);
                     cmd.Parameters.AddWithValue("@total", total);
 
                     cmd.ExecuteNonQuery();

@@ -104,7 +104,8 @@ namespace HaninLaundry
             FormBayarPesanan form = new FormBayarPesanan(idPesanan);
             form.ShowDialog();
 
-            LoadData(); // Refresh setelah transaksi
+            LoadData();
+            selectedRow = null;
         }
 
 
@@ -204,6 +205,12 @@ namespace HaninLaundry
                     MessageBox.Show("Gagal hapus: " + ex.Message);
                 }
             }
+        }
+
+        private void btnRiwayatBayar_Click(object sender, EventArgs e)
+        {
+            FormPembayaran form = new FormPembayaran();
+            form.ShowDialog();
         }
     }
 }
