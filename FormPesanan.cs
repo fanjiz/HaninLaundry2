@@ -85,7 +85,6 @@ namespace HaninLaundry
                 return;
             }
 
-            // Ambil nilai id_pesanan
             object idObj = selectedRow.Cells["id_pesanan"].Value;
             if (idObj == null || idObj == DBNull.Value)
             {
@@ -95,7 +94,6 @@ namespace HaninLaundry
 
             int idPesanan = Convert.ToInt32(idObj);
 
-            // Cek status pembayaran dulu
             string statusPembayaran = selectedRow.Cells["pembayaran"].Value?.ToString();
             if (!string.IsNullOrEmpty(statusPembayaran) && statusPembayaran.ToLower() == "sudah bayar")
             {
@@ -103,12 +101,13 @@ namespace HaninLaundry
                 return;
             }
 
-            // Buka FormBayarPesanan
             FormBayarPesanan form = new FormBayarPesanan(idPesanan);
             form.ShowDialog();
 
             LoadData(); // Refresh setelah transaksi
         }
+
+
 
         private void btnTambahPesanan_Click(object sender, EventArgs e)
         {

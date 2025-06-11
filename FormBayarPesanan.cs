@@ -53,7 +53,7 @@ namespace HaninLaundry
 
                     using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                     {
-            DataTable dt = new DataTable();
+                        DataTable dt = new DataTable();
                         adapter.Fill(dt);
 
                         if (dt.Rows.Count > 0)
@@ -120,19 +120,19 @@ namespace HaninLaundry
                         object result = cmd.ExecuteScalar();
 
                         if (result == null || result == DBNull.Value)
-            {
+                        {
                             MessageBox.Show("Data pesanan tidak ditemukan.");
-                return;
-            }
+                            return;
+                        }
 
                         totalHarga = Convert.ToDecimal(result);
                     }
 
-            if (uangDiterima < totalHarga)
-            {
-                MessageBox.Show("Uang yang diterima kurang dari total pembayaran.");
-                return;
-            }
+                    if (uangDiterima < totalHarga)
+                    {
+                        MessageBox.Show("Uang yang diterima kurang dari total pembayaran.");
+                        return;
+                    }
 
                     // 2. Update status pembayaran
                     string updateQuery = "UPDATE pesanan SET pembayaran = 'Sudah bayar' WHERE id_pesanan = @id";
@@ -143,7 +143,7 @@ namespace HaninLaundry
                     }
 
                     // 3. Hitung dan tampilkan kembalian
-            decimal kembalian = uangDiterima - totalHarga;
+                    decimal kembalian = uangDiterima - totalHarga;
                     MessageBox.Show($"Pembayaran berhasil.\nKembalian: Rp {kembalian:N0}", "Pembayaran", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     this.Close();
@@ -153,10 +153,6 @@ namespace HaninLaundry
                     MessageBox.Show("Terjadi kesalahan saat pembayaran: " + ex.Message);
                 }
             }
-
-            // 5. Tampilkan pesan dan tutup form
-            MessageBox.Show($"Pembayaran berhasil.\nKembalian: Rp {kembalian:N0}", "Pembayaran", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
         }
     }
 }
