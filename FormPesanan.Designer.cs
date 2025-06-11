@@ -175,6 +175,7 @@
             btnNext.TabIndex = 21;
             btnNext.Text = "Next";
             btnNext.UseVisualStyleBackColor = true;
+            btnNext.Click += btnNext_Click;
             // 
             // btnPrev
             // 
@@ -185,6 +186,7 @@
             btnPrev.TabIndex = 20;
             btnPrev.Text = "Prev";
             btnPrev.UseVisualStyleBackColor = true;
+            btnPrev.Click += btnPrev_Click;
             // 
             // btnKaryawan
             // 

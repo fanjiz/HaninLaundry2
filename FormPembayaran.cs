@@ -13,7 +13,7 @@ namespace HaninLaundry
 {
     public partial class FormPembayaran : Form
     {
-        int pageSize = 3;
+        int pageSize = 10;
         int currentPage = 1;
         int totalPages = 1;
         int totalRecords = 0;

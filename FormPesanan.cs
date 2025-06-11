@@ -15,6 +15,11 @@ namespace HaninLaundry
 
     public partial class FormPesanan : Form
     {
+        int pageSize = 10;             // jumlah data per halaman
+        int currentPage = 1;           // halaman saat ini
+        int totalPages = 1;            // total halaman
+        int totalRecords = 0;          // jumlah total data
+
         private int selectedIdPesanan = -1;
         private DataGridViewRow selectedRow = null;
 
@@ -31,34 +36,49 @@ namespace HaninLaundry
                 try
                 {
                     conn.Open();
-                    string query = @"
-                    SELECT 
-                        ps.id_pesanan,
-                        u.nama AS petugas,
-                        p.nama_plg AS nama_pelanggan,
-                        p.no_hp_plg AS no_hp_pelanggan,
-                        l.nama_layanan,
-                        l.harga,
-                        ps.jumlah,
-                        (l.harga * ps.jumlah) AS total_harga,
-                        ps.tgl_masuk,
-                        ps.status_pengerjaan,
-                        ps.pembayaran
-                    FROM pesanan ps
-                    JOIN user u ON ps.id_user = u.id_user
-                    JOIN pelanggan p ON ps.id_plg = p.id_plg
-                    JOIN layanan l ON ps.id_layanan = l.id_layanan
-                    ORDER BY ps.tgl_masuk DESC, ps.id_pesanan DESC
-                    ";
 
-                    MySqlDataAdapter da = new MySqlDataAdapter(query, conn);
+                    // Hitung total data
+                    string countQuery = "SELECT COUNT(*) FROM pesanan";
+                    MySqlCommand countCmd = new MySqlCommand(countQuery, conn);
+                    totalRecords = Convert.ToInt32(countCmd.ExecuteScalar());
+
+                    totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+                    if (currentPage > totalPages) currentPage = totalPages;
+                    if (currentPage < 1) currentPage = 1;
+
+                    int offset = (currentPage - 1) * pageSize;
+
+                    string query = @"
+                SELECT 
+                    ps.id_pesanan,
+                    u.nama AS petugas,
+                    p.nama_plg AS nama_pelanggan,
+                    p.no_hp_plg AS no_hp_pelanggan,
+                    l.nama_layanan,
+                    l.harga,
+                    ps.jumlah,
+                    (l.harga * ps.jumlah) AS total_harga,
+                    ps.tgl_masuk,
+                    ps.status_pengerjaan,
+                    ps.pembayaran
+                FROM pesanan ps
+                JOIN user u ON ps.id_user = u.id_user
+                JOIN pelanggan p ON ps.id_plg = p.id_plg
+                JOIN layanan l ON ps.id_layanan = l.id_layanan
+                ORDER BY ps.tgl_masuk DESC, ps.id_pesanan DESC
+                LIMIT @limit OFFSET @offset";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@limit", pageSize);
+                    cmd.Parameters.AddWithValue("@offset", offset);
+
+                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dgvPesanan.DataSource = dt;
 
                     dgvPesanan.Columns["id_pesanan"].Visible = false;
 
-                    // Header kolom agar lebih rapi
                     dgvPesanan.Columns["petugas"].HeaderText = "Petugas";
                     dgvPesanan.Columns["nama_pelanggan"].HeaderText = "Nama Pelanggan";
                     dgvPesanan.Columns["no_hp_pelanggan"].HeaderText = "No. HP";
@@ -69,6 +89,10 @@ namespace HaninLaundry
                     dgvPesanan.Columns["tgl_masuk"].HeaderText = "Tanggal Masuk";
                     dgvPesanan.Columns["status_pengerjaan"].HeaderText = "Status";
                     dgvPesanan.Columns["pembayaran"].HeaderText = "Pembayaran";
+
+                    // Update info halaman
+                    lblPageInfo.Text = $"Halaman {currentPage} dari {totalPages}";
+
                 }
                 catch (Exception ex)
                 {
@@ -107,8 +131,6 @@ namespace HaninLaundry
             LoadData();
             selectedRow = null;
         }
-
-
 
         private void btnTambahPesanan_Click(object sender, EventArgs e)
         {
@@ -211,6 +233,24 @@ namespace HaninLaundry
         {
             FormPembayaran form = new FormPembayaran();
             form.ShowDialog();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                LoadData();
+            }
+        }
+
+        private void btnPrev_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                LoadData();
+            }
         }
     }
 }
