@@ -43,6 +43,8 @@
             btnNext = new Button();
             btnPrev = new Button();
             btnKaryawan = new Button();
+            tbCari = new TextBox();
+            btnCari = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPesanan).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             SuspendLayout();
@@ -50,7 +52,7 @@
             // dgvPesanan
             // 
             dgvPesanan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvPesanan.Location = new Point(257, 97);
+            dgvPesanan.Location = new Point(254, 126);
             dgvPesanan.Margin = new Padding(2);
             dgvPesanan.Name = "dgvPesanan";
             dgvPesanan.RowHeadersWidth = 62;
@@ -73,7 +75,7 @@
             pictureBox5.BackColor = SystemColors.MenuHighlight;
             pictureBox5.BackgroundImage = Properties.Resources.Desain_tanpa_judul_1;
             pictureBox5.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox5.Location = new Point(868, 11);
+            pictureBox5.Location = new Point(865, 11);
             pictureBox5.Margin = new Padding(2);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(51, 50);
@@ -83,7 +85,7 @@
             // btnTambahPesanan
             // 
             btnTambahPesanan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnTambahPesanan.Location = new Point(20, 97);
+            btnTambahPesanan.Location = new Point(17, 126);
             btnTambahPesanan.Name = "btnTambahPesanan";
             btnTambahPesanan.Size = new Size(194, 49);
             btnTambahPesanan.TabIndex = 9;
@@ -94,7 +96,7 @@
             // btnBayarPesanan
             // 
             btnBayarPesanan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBayarPesanan.Location = new Point(20, 163);
+            btnBayarPesanan.Location = new Point(17, 192);
             btnBayarPesanan.Name = "btnBayarPesanan";
             btnBayarPesanan.Size = new Size(194, 49);
             btnBayarPesanan.TabIndex = 10;
@@ -105,7 +107,7 @@
             // btnHapus
             // 
             btnHapus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnHapus.Location = new Point(770, 476);
+            btnHapus.Location = new Point(767, 505);
             btnHapus.Name = "btnHapus";
             btnHapus.Size = new Size(149, 49);
             btnHapus.TabIndex = 11;
@@ -118,7 +120,7 @@
             cbStatusPengerjaan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             cbStatusPengerjaan.FormattingEnabled = true;
             cbStatusPengerjaan.Items.AddRange(new object[] { "Diproses", "Selesai", "Diambil" });
-            cbStatusPengerjaan.Location = new Point(258, 496);
+            cbStatusPengerjaan.Location = new Point(255, 525);
             cbStatusPengerjaan.Name = "cbStatusPengerjaan";
             cbStatusPengerjaan.Size = new Size(194, 29);
             cbStatusPengerjaan.TabIndex = 12;
@@ -128,7 +130,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(254, 474);
+            label1.Location = new Point(251, 503);
             label1.Name = "label1";
             label1.Size = new Size(174, 21);
             label1.TabIndex = 13;
@@ -137,7 +139,7 @@
             // btnSimpan
             // 
             btnSimpan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSimpan.Location = new Point(486, 476);
+            btnSimpan.Location = new Point(483, 505);
             btnSimpan.Name = "btnSimpan";
             btnSimpan.Size = new Size(149, 49);
             btnSimpan.TabIndex = 15;
@@ -148,7 +150,7 @@
             // btnRiwayatBayar
             // 
             btnRiwayatBayar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRiwayatBayar.Location = new Point(20, 268);
+            btnRiwayatBayar.Location = new Point(17, 297);
             btnRiwayatBayar.Name = "btnRiwayatBayar";
             btnRiwayatBayar.Size = new Size(194, 49);
             btnRiwayatBayar.TabIndex = 16;
@@ -160,7 +162,7 @@
             // 
             lblPageInfo.AutoSize = true;
             lblPageInfo.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblPageInfo.Location = new Point(790, 405);
+            lblPageInfo.Location = new Point(787, 434);
             lblPageInfo.Name = "lblPageInfo";
             lblPageInfo.Size = new Size(129, 21);
             lblPageInfo.TabIndex = 22;
@@ -169,7 +171,7 @@
             // btnNext
             // 
             btnNext.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnNext.Location = new Point(336, 396);
+            btnNext.Location = new Point(333, 425);
             btnNext.Name = "btnNext";
             btnNext.Size = new Size(71, 39);
             btnNext.TabIndex = 21;
@@ -180,7 +182,7 @@
             // btnPrev
             // 
             btnPrev.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnPrev.Location = new Point(258, 396);
+            btnPrev.Location = new Point(255, 425);
             btnPrev.Name = "btnPrev";
             btnPrev.Size = new Size(71, 39);
             btnPrev.TabIndex = 20;
@@ -191,18 +193,39 @@
             // btnKaryawan
             // 
             btnKaryawan.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnKaryawan.Location = new Point(20, 333);
+            btnKaryawan.Location = new Point(17, 362);
             btnKaryawan.Name = "btnKaryawan";
             btnKaryawan.Size = new Size(194, 49);
             btnKaryawan.TabIndex = 14;
             btnKaryawan.Text = "Karyawan";
             btnKaryawan.UseVisualStyleBackColor = true;
             // 
+            // tbCari
+            // 
+            tbCari.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbCari.Location = new Point(631, 79);
+            tbCari.Name = "tbCari";
+            tbCari.Size = new Size(192, 29);
+            tbCari.TabIndex = 23;
+            // 
+            // btnCari
+            // 
+            btnCari.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCari.Location = new Point(829, 73);
+            btnCari.Name = "btnCari";
+            btnCari.Size = new Size(71, 39);
+            btnCari.TabIndex = 24;
+            btnCari.Text = "Cari";
+            btnCari.UseVisualStyleBackColor = true;
+            btnCari.Click += btnCari_Click;
+            // 
             // FormPesanan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(941, 589);
+            Controls.Add(btnCari);
+            Controls.Add(tbCari);
             Controls.Add(lblPageInfo);
             Controls.Add(btnNext);
             Controls.Add(btnPrev);
@@ -243,5 +266,7 @@
         private Button btnNext;
         private Button btnPrev;
         private Button btnKaryawan;
+        private TextBox tbCari;
+        private Button btnCari;
     }
 }

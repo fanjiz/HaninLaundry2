@@ -20,6 +20,8 @@ namespace HaninLaundry
         int totalPages = 1;            // total halaman
         int totalRecords = 0;          // jumlah total data
 
+        bool isFiltered = false;
+
         private int selectedIdPesanan = -1;
         private DataGridViewRow selectedRow = null;
 
@@ -235,12 +237,95 @@ namespace HaninLaundry
             form.ShowDialog();
         }
 
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+            currentPage = 1;
+            isFiltered = true;
+            TampilkanDataFiltered();
+        }
+
+        private void TampilkanDataFiltered()
+        {
+            string keyword = tbCari.Text.Trim(); // inputan dari TextBox
+            string likeClause = $@"
+        (u.nama LIKE @keyword OR 
+         p.nama_plg LIKE @keyword OR 
+         p.no_hp_plg LIKE @keyword OR 
+         l.nama_layanan LIKE @keyword OR 
+         ps.jumlah LIKE @keyword OR 
+         ps.total_harga LIKE @keyword OR 
+         ps.tgl_masuk LIKE @keyword OR
+         ps.status_pengerjaan LIKE @keyword OR
+         ps.pembayaran LIKE @keyword)";
+
+            using (MySqlConnection conn = new MySqlConnection(DBConfig.ConnStr))
+            {
+                conn.Open();
+
+                // Hitung total record hasil pencarian
+                string countQuery = $@"
+            SELECT COUNT(*) FROM pesanan ps
+            JOIN user u ON ps.id_user = u.id_user
+            JOIN pelanggan p ON ps.id_plg = p.id_plg
+            JOIN layanan l ON ps.id_layanan = l.id_layanan
+            WHERE {likeClause}";
+
+                MySqlCommand countCmd = new MySqlCommand(countQuery, conn);
+                countCmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+                totalRecords = Convert.ToInt32(countCmd.ExecuteScalar());
+
+                totalPages = (int)Math.Ceiling((double)totalRecords / pageSize);
+                if (currentPage > totalPages) currentPage = totalPages;
+                if (currentPage < 1) currentPage = 1;
+
+                int offset = (currentPage - 1) * pageSize;
+
+                string query = $@"
+            SELECT 
+                ps.id_pesanan,
+                u.nama AS petugas,
+                p.nama_plg AS nama_pelanggan,
+                p.no_hp_plg AS no_hp_pelanggan,
+                l.nama_layanan,
+                l.harga,
+                ps.jumlah,
+                (l.harga * ps.jumlah) AS total_harga,
+                ps.tgl_masuk,
+                ps.status_pengerjaan,
+                ps.pembayaran
+            FROM pesanan ps
+            JOIN user u ON ps.id_user = u.id_user
+            JOIN pelanggan p ON ps.id_plg = p.id_plg
+            JOIN layanan l ON ps.id_layanan = l.id_layanan
+            WHERE {likeClause}
+            ORDER BY ps.tgl_masuk DESC, ps.id_pesanan DESC
+            LIMIT @limit OFFSET @offset";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@keyword", "%" + keyword + "%");
+                cmd.Parameters.AddWithValue("@limit", pageSize);
+                cmd.Parameters.AddWithValue("@offset", offset);
+
+                MySqlDataAdapter da = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dgvPesanan.DataSource = dt;
+
+                dgvPesanan.Columns["id_pesanan"].Visible = false;
+
+                lblPageInfo.Text = $"Halaman {currentPage} dari {totalPages}";
+            }
+        }
+
         private void btnNext_Click(object sender, EventArgs e)
         {
             if (currentPage < totalPages)
             {
                 currentPage++;
-                LoadData();
+                if (isFiltered)
+                    TampilkanDataFiltered();
+                else
+                    LoadData();
             }
         }
 
@@ -249,8 +334,12 @@ namespace HaninLaundry
             if (currentPage > 1)
             {
                 currentPage--;
-                LoadData();
+                if (isFiltered)
+                    TampilkanDataFiltered();
+                else
+                    LoadData();
             }
         }
+
     }
 }
