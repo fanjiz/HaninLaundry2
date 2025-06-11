@@ -13,6 +13,7 @@ namespace HaninLaundry
 {
     public partial class FormTambahPesanan : Form
     {
+
         public FormTambahPesanan()
         {
             InitializeComponent();
@@ -208,5 +209,85 @@ namespace HaninLaundry
                 }
             }
         }
+
+        private void btnBayar_Click(object sender, EventArgs e)
+        {
+            if (!ValidasiInput()) return;
+
+            using (MySqlConnection conn = new MySqlConnection(DBConfig.ConnStr))
+            {
+                try
+                {
+                    conn.Open();
+
+                    // 1. Cek apakah pelanggan sudah ada berdasarkan no_hp
+                    int idPelanggan;
+                    string cekPelanggan = "SELECT id_plg FROM pelanggan WHERE no_hp_plg = @hp";
+                    using (MySqlCommand cekCmd = new MySqlCommand(cekPelanggan, conn))
+                    {
+                        cekCmd.Parameters.AddWithValue("@hp", tbNohp.Text.Trim());
+                        object result = cekCmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            idPelanggan = Convert.ToInt32(result);
+                        }
+                        else
+                        {
+                            string insert = "INSERT INTO pelanggan (nama_plg, no_hp_plg) VALUES (@nama, @hp)";
+                            using (MySqlCommand insertCmd = new MySqlCommand(insert, conn))
+                            {
+                                insertCmd.Parameters.AddWithValue("@nama", tbNamaplg.Text.Trim());
+                                insertCmd.Parameters.AddWithValue("@hp", tbNohp.Text.Trim());
+                                insertCmd.ExecuteNonQuery();
+                                idPelanggan = (int)insertCmd.LastInsertedId;
+                            }
+                        }
+                    }
+
+                    // 2. Ambil layanan yang dipilih
+                    LayananItem layananDipilih = cbLayanan.SelectedItem as LayananItem;
+                    if (layananDipilih == null)
+                    {
+                        MessageBox.Show("Silakan pilih layanan terlebih dahulu.");
+                        return;
+                    }
+
+                    int idLayanan = layananDipilih.Id;
+                    decimal harga = layananDipilih.Harga;
+
+                    // 3. Hitung total
+                    int jumlah = int.Parse(tbJumlah.Text);
+                    decimal total = jumlah * harga;
+
+                    // 4. Simpan pesanan dengan status default
+                    string insertPesanan = @"INSERT INTO pesanan 
+                (id_user, id_plg, id_layanan, jumlah, tgl_masuk, total_harga, pembayaran, status_pengerjaan)
+                VALUES 
+                (@iduser, @idplg, @idlayanan, @jumlah, CURDATE(), @total, 'Belum bayar', 'Menunggu')";
+                    MySqlCommand cmd = new MySqlCommand(insertPesanan, conn);
+                    cmd.Parameters.AddWithValue("@iduser", SessionUser.IdUser);
+                    cmd.Parameters.AddWithValue("@idplg", idPelanggan);
+                    cmd.Parameters.AddWithValue("@idlayanan", idLayanan);
+                    cmd.Parameters.AddWithValue("@jumlah", jumlah);
+                    cmd.Parameters.AddWithValue("@total", total);
+
+                    cmd.ExecuteNonQuery();
+
+                    int lastInsertedId = (int)cmd.LastInsertedId;
+
+                    // 5. Tampilkan FormBayarPesanan berdasarkan ID terakhir
+                    FormBayarPesanan frm = new FormBayarPesanan(lastInsertedId);
+                    frm.ShowDialog();
+
+                    this.Close(); // Tutup form tambah
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal simpan & proses pembayaran: " + ex.Message);
+                }
+            }
+        }
+
     }
 }

@@ -135,6 +135,7 @@
             btnBayar.TabIndex = 10;
             btnBayar.Text = "Bayar Sekarang";
             btnBayar.UseVisualStyleBackColor = true;
+            btnBayar.Click += btnBayar_Click;
             // 
             // FormTambahPesanan
             // 
@@ -153,7 +154,7 @@
             Controls.Add(label1);
             Name = "FormTambahPesanan";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormTambahPesanan";
+            Text = "Tambah Pesanan";
             ResumeLayout(false);
             PerformLayout();
         }
