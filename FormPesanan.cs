@@ -16,6 +16,7 @@ namespace HaninLaundry
     public partial class FormPesanan : Form
     {
         private int selectedIdPesanan = -1;
+        private DataGridViewRow selectedRow = null;
 
         public FormPesanan()
         {
@@ -32,7 +33,7 @@ namespace HaninLaundry
                     conn.Open();
                     string query = @"
                     SELECT 
-                        ps.id_pesanan,  -- ⬅️ Tambahkan ini
+                        ps.id_pesanan,
                         u.nama AS petugas,
                         p.nama_plg AS nama_pelanggan,
                         p.no_hp_plg AS no_hp_pelanggan,
@@ -41,7 +42,8 @@ namespace HaninLaundry
                         ps.jumlah,
                         (l.harga * ps.jumlah) AS total_harga,
                         ps.tgl_masuk,
-                        ps.status_pengerjaan
+                        ps.status_pengerjaan,
+                        ps.pembayaran
                     FROM pesanan ps
                     JOIN user u ON ps.id_user = u.id_user
                     JOIN pelanggan p ON ps.id_plg = p.id_plg
@@ -56,7 +58,6 @@ namespace HaninLaundry
 
                     dgvPesanan.Columns["id_pesanan"].Visible = false;
 
-
                     // Header kolom agar lebih rapi
                     dgvPesanan.Columns["petugas"].HeaderText = "Petugas";
                     dgvPesanan.Columns["nama_pelanggan"].HeaderText = "Nama Pelanggan";
@@ -67,6 +68,7 @@ namespace HaninLaundry
                     dgvPesanan.Columns["total_harga"].HeaderText = "Total Harga";
                     dgvPesanan.Columns["tgl_masuk"].HeaderText = "Tanggal Masuk";
                     dgvPesanan.Columns["status_pengerjaan"].HeaderText = "Status";
+                    dgvPesanan.Columns["pembayaran"].HeaderText = "Pembayaran";
                 }
                 catch (Exception ex)
                 {
@@ -77,7 +79,16 @@ namespace HaninLaundry
 
         private void btnBayarPesanan_Click_1(object sender, EventArgs e)
         {
+            if (selectedRow == null)
+            {
+                MessageBox.Show("Silakan pilih pesanan yang ingin dibayar.");
+                return;
+            }
 
+            FormBayarPesanan form = new FormBayarPesanan(selectedRow);
+            form.ShowDialog();
+            this.Show();
+            LoadData();
         }
 
         private void btnTambahPesanan_Click(object sender, EventArgs e)
@@ -98,6 +109,8 @@ namespace HaninLaundry
 
                 string status = dgvPesanan.Rows[e.RowIndex].Cells["status_pengerjaan"].Value?.ToString() ?? "";
                 cbStatusPengerjaan.SelectedItem = status;
+
+                selectedRow = dgvPesanan.Rows[e.RowIndex];
             }
         }
 

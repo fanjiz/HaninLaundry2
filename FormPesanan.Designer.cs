@@ -39,6 +39,7 @@
             label1 = new Label();
             btnKaryawan = new Button();
             btnSimpan = new Button();
+            btnRiwayatBayar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPesanan).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).BeginInit();
             SuspendLayout();
@@ -151,11 +152,22 @@
             btnSimpan.UseVisualStyleBackColor = true;
             btnSimpan.Click += btnSimpan_Click;
             // 
+            // btnRiwayatBayar
+            // 
+            btnRiwayatBayar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRiwayatBayar.Location = new Point(20, 268);
+            btnRiwayatBayar.Name = "btnRiwayatBayar";
+            btnRiwayatBayar.Size = new Size(194, 49);
+            btnRiwayatBayar.TabIndex = 16;
+            btnRiwayatBayar.Text = "Riwayat Pembayaran";
+            btnRiwayatBayar.UseVisualStyleBackColor = true;
+            // 
             // FormPesanan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(941, 589);
+            Controls.Add(btnRiwayatBayar);
             Controls.Add(btnSimpan);
             Controls.Add(btnKaryawan);
             Controls.Add(label1);
@@ -188,5 +200,6 @@
         private Label label1;
         private Button btnKaryawan;
         private Button btnSimpan;
+        private Button btnRiwayatBayar;
     }
 }
